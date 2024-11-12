@@ -104,25 +104,33 @@ function Menu() {
     )
 }
 
-function Footer() {
+function Order() {
     const hour = new Date().getHours();
     const isOpen = hour >= 12 && hour <= 22? true: false;
     return (
+        <div>
+            { isOpen ? 
+            <div className="order">
+                <p>We're currently open</p>
+                <button type="button" className="btn">Order</button>
+                <p className="open">Open from 11:00 AM to 10:00 PM</p>
+            </div>
+            :
+            <div className="order">
+                <p>Sorry we're closed</p>
+                <button type="button" className="btn" disabled>Order</button>
+                <p className="open">Open from 11:00 AM to 10:00 PM</p>
+            </div>
+            }
+        </div>
+    )
+}
+
+function Footer() {
+    return (
     <div>
         <footer className="footer">
-                { isOpen ? 
-                <div className="order">
-                    <p>We're currently open</p>
-                    <button type="button" className="btn">Order</button>
-                    <p className="open">Open from 11:00 AM to 10:00 PM</p>
-                </div>
-                :
-                <div className="order">
-                    <p>Sorry we're closed</p>
-                    <button type="button" className="btn" disabled>Order</button>
-                    <p className="open">Open from 11:00 AM to 10:00 PM</p>
-                </div>
-                }
+            <Order />
         </footer>
     </div>  
     )
